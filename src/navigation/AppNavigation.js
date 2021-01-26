@@ -3,10 +3,10 @@ import MainScreen from "../screens/MainScreen";
 import {createAppContainer} from "react-navigation";
 
 const ListOfProducts = createStackNavigator({
-    Main: MainScreen
-},
+        Main: MainScreen
+    },
     {
-        defaultNavigationOptions:{
+        defaultNavigationOptions: {
             headerTintColor: '#25262B',
             headerTitle: 'Список товаров',
             headerTitleAlign: 'center'

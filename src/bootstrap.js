@@ -6,8 +6,7 @@ export const bootstrap = async () => {
             'proximaNova-bold': require('../assets/fonts/ProximaNova-Bold.ttf'),
             'proximaNova-regular': require('../assets/fonts/ProximaNova-Regular.ttf'),
         })
-    }
-    catch (e) {
+    } catch (e) {
         console.log(e)
     }
 }

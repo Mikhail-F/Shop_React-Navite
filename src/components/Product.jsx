@@ -15,7 +15,8 @@ const Product = ({item}) => {
 const styles = StyleSheet.create({
     wrapper: {
         width: '45%',
-        margin: 10
+        margin: 10,
+        marginTop: 20
     },
     img: {
         width: '100%',

@@ -1,13 +1,14 @@
 import React, {useEffect} from 'react'
-import {View, ActivityIndicator, FlatList, StyleSheet} from "react-native";
+import {View, ActivityIndicator, FlatList, StyleSheet, Text, TouchableOpacity} from "react-native";
 import {useDispatch, useSelector} from "react-redux";
-import {getProducts} from "../Redux/productsReducer";
+import {deleteError, getProducts} from "../Redux/productsReducer";
 import Product from "../components/Product";
-
+import {FontAwesome} from '@expo/vector-icons';
 
 const MainScreen = () => {
     let dispatch = useDispatch()
     let loading = useSelector(state => state.products.loading)
+    let error = useSelector(state => state.products.error)
     let products = useSelector(state => state.products.products)
 
     useEffect(() => {
@@ -21,6 +22,21 @@ const MainScreen = () => {
             </View>
         )
     }
+
+    if (error) {
+        return (
+            <View style={styles.wrapper}>
+                <TouchableOpacity activeOpacity={0.7} onPress={() => [dispatch(deleteError()), dispatch(getProducts())]}
+                                  style={styles.errorWrapper}>
+                    <Text style={styles.errorText}>
+                        Данные не были загружены
+                    </Text>
+                    <FontAwesome name="refresh" size={24} color="black"/>
+                </TouchableOpacity>
+            </View>
+        )
+    }
+
     return (
         <View style={styles.wrapper}>
             <FlatList
@@ -37,6 +53,16 @@ const styles = StyleSheet.create({
     wrapper: {
         flex: 1,
         paddingHorizontal: 10
+    },
+    errorWrapper: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        flexDirection: 'row'
+    },
+    errorText: {
+        fontSize: 18,
+        marginRight: 20
     }
 })
 
