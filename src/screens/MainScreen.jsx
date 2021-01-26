@@ -29,7 +29,7 @@ const MainScreen = () => {
                 <TouchableOpacity activeOpacity={0.7} onPress={() => [dispatch(deleteError()), dispatch(getProducts())]}
                                   style={styles.errorWrapper}>
                     <Text style={styles.errorText}>
-                        Данные не были загружены
+                        {error}
                     </Text>
                     <FontAwesome name="refresh" size={24} color="black"/>
                 </TouchableOpacity>
